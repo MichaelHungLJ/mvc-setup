@@ -1,7 +1,7 @@
 //this middleware will authenticate the JWT tokens
 
 const jwt = require("jsonwebtoken");
-const authJWT = () => async (req, res, next) => {
+const authJWT = async (req, res, next) => {
   try {
     const authToken = req.header("Authorization").replace("Bearer ", "");
     const verifiedToken = jwt.verify(authToken, process.env.JWT_SECRET);
@@ -15,4 +15,4 @@ const authJWT = () => async (req, res, next) => {
   }
 };
 
-module.exports = authJWT();
+module.exports = authJWT;
